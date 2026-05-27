@@ -2,7 +2,7 @@ import useFetch from "../hooks/useFetch";
 
 interface Metric {
   id: number;
-  value: number;
+  title: number;
 }
 
 interface DataDisplayProps {
@@ -38,7 +38,7 @@ const DataDisplay = ({ url }: DataDisplayProps) => {
   return (
     <ul>
       {data.map((d) => (
-        <li key={d.id}>Value: {d.value}</li>
+        <li key={d.id}>Value: {d.title}</li>
       ))}
     </ul>
   );
