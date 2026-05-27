@@ -37,7 +37,7 @@ describe("<DataDisplay>", () => {
   it("should display data", async () => {
     render(<DataDisplay url='/api/metrics' />);
     await waitFor(() => {
-      expect(screen.getByText("Value: 100")).toBeInTheDocument();
+      expect(screen.getByText("Title: 100")).toBeInTheDocument();
     });
   });
 });

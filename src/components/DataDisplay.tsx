@@ -2,7 +2,7 @@ import useFetch from "../hooks/useFetch";
 
 interface Metric {
   id: number;
-  title: number;
+  title: string;
 }
 
 interface DataDisplayProps {
@@ -11,7 +11,7 @@ interface DataDisplayProps {
 
 const DataDisplay = ({ url }: DataDisplayProps) => {
   const { data, loading, error } = useFetch<Metric[]>(url);
-
+  console.log(data);
   if (loading)
     return (
       <div aria-live='polite' aria-busy='true'>
@@ -38,7 +38,7 @@ const DataDisplay = ({ url }: DataDisplayProps) => {
   return (
     <ul>
       {data.map((d) => (
-        <li key={d.id}>Value: {d.title}</li>
+        <li key={d.id}>Title: {d.title}</li>
       ))}
     </ul>
   );

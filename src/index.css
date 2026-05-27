@@ -42,6 +42,13 @@
   border-width: 0;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
