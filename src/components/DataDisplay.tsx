@@ -11,7 +11,7 @@ interface DataDisplayProps {
 
 const DataDisplay = ({ url }: DataDisplayProps) => {
   const { data, loading, error } = useFetch<Metric[]>(url);
-  console.log(data);
+
   if (loading)
     return (
       <div aria-live='polite' aria-busy='true'>
