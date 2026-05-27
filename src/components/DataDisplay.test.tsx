@@ -5,7 +5,7 @@ describe("<DataDisplay>", () => {
   beforeEach(() => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      json: async () => [{ id: 1, value: 100 }],
+      json: async () => [{ id: 1, title: 100 }],
     });
   });
 
