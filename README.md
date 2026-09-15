@@ -12,6 +12,16 @@ Covers:
 - TypeScript generics for typed API responses
 - Proper HTTP error handling via `response.ok`
 
+## Redux Toolkit Query
+
+The same data source (JSONPlaceholder posts) fetched a second way, via an RTK Query API slice instead of the custom hook above, shown side by side on the same page for comparison.
+
+Covers:
+
+- `createApi`/`fetchBaseQuery` for a typed, cache-aware data layer
+- Store setup with `configureStore`, including RTK Query's generated reducer and middleware
+- A generated query hook (`useGetMetricsQuery`) replacing manual loading/error state management
+
 ## Tests
 
 Tests cover:
