@@ -27,7 +27,7 @@ const jsonResponse = (body: unknown) =>
 
 describe("<MetricsQuery>", () => {
   beforeEach(() => {
-    global.fetch = vi
+    globalThis.fetch = vi
       .fn()
       .mockResolvedValue(jsonResponse([{ id: 1, title: 100 }]));
   });
@@ -38,7 +38,7 @@ describe("<MetricsQuery>", () => {
   });
 
   it("should display error state correctly", async () => {
-    global.fetch = vi.fn().mockRejectedValue(new Error("Network error"));
+    globalThis.fetch = vi.fn().mockRejectedValue(new Error("Network error"));
     renderWithStore();
     await waitFor(() => {
       expect(
@@ -48,7 +48,7 @@ describe("<MetricsQuery>", () => {
   });
 
   it("should display empty state correctly", async () => {
-    global.fetch = vi.fn().mockResolvedValue(jsonResponse([]));
+    globalThis.fetch = vi.fn().mockResolvedValue(jsonResponse([]));
     renderWithStore();
     await waitFor(() => {
       expect(screen.getByText("There is no data")).toBeInTheDocument();

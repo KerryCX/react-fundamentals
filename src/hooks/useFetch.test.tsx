@@ -3,7 +3,7 @@ import useFetch from "./useFetch";
 
 describe("useFetch", () => {
   beforeEach(() => {
-    global.fetch = vi.fn().mockResolvedValue({
+    globalThis.fetch = vi.fn().mockResolvedValue({
       ok: true,
       json: async () => [{ id: 1, value: 100 }],
     });
@@ -23,7 +23,7 @@ describe("useFetch", () => {
   });
 
   it("should return error when fetch fails", async () => {
-    global.fetch = vi.fn().mockRejectedValue(new Error("Network error"));
+    globalThis.fetch = vi.fn().mockRejectedValue(new Error("Network error"));
     const { result } = renderHook(() => useFetch("/api/metrics"));
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
@@ -32,7 +32,7 @@ describe("useFetch", () => {
   });
 
   it("should handle empty data response", async () => {
-    global.fetch = vi.fn().mockResolvedValue({
+    globalThis.fetch = vi.fn().mockResolvedValue({
       ok: true,
       json: async () => [],
     });
@@ -44,7 +44,7 @@ describe("useFetch", () => {
   });
 
   it("should return error when response is not ok", async () => {
-    global.fetch = vi.fn().mockResolvedValue({ ok: false, status: 404 });
+    globalThis.fetch = vi.fn().mockResolvedValue({ ok: false, status: 404 });
     const { result } = renderHook(() => useFetch("/api/metrics"));
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
