@@ -3,7 +3,7 @@ import DataDisplay from "./DataDisplay";
 
 describe("<DataDisplay>", () => {
   beforeEach(() => {
-    global.fetch = vi.fn().mockResolvedValue({
+    globalThis.fetch = vi.fn().mockResolvedValue({
       ok: true,
       json: async () => [{ id: 1, title: 100 }],
     });
@@ -15,7 +15,7 @@ describe("<DataDisplay>", () => {
   });
 
   it("should display error state correctly", async () => {
-    global.fetch = vi.fn().mockRejectedValue(new Error("Network error"));
+    globalThis.fetch = vi.fn().mockRejectedValue(new Error("Network error"));
     render(<DataDisplay url='/api/metrics' />);
     await waitFor(() => {
       expect(
@@ -25,7 +25,7 @@ describe("<DataDisplay>", () => {
   });
 
   it("should display empty state correctly", async () => {
-    global.fetch = vi
+    globalThis.fetch = vi
       .fn()
       .mockResolvedValue({ ok: true, json: async () => [] });
     render(<DataDisplay url='/api/metrics' />);
